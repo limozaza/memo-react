@@ -12,9 +12,9 @@ class App extends Component {
         {name:"Adil", age:"17"}
     ],
     personnes0 : [
-      {name:"Zakaria", age:"32"},
-      {name:"Kassym", age:"2"},
-      {name:"Adil", age:"17"}
+      {id:"1", name:"Zakaria", age:"32"},
+      {id:"2",name:"Kassym", age:"2"},
+      {id:"3",name:"Adil", age:"17"}
     ],
     showPersons: false
   }
@@ -50,6 +50,20 @@ class App extends Component {
   persons.splice(personIndex, 1);
   this.setState({personnes0: persons});
  }
+ nameChangedHandlerBis = (event, id) => {
+   const personIndex = this.state.personnes0.findIndex(p => {
+      return p.id === id;
+   });
+   const person= { ...this.state.personnes0[personIndex] };
+   person.name = event.target.value;
+
+   const persons = [...this.state.personnes0];
+   persons[personIndex] = person;
+
+   this.setState({
+     personnes0: persons
+   })
+ }
 
   render() {
 
@@ -69,7 +83,8 @@ class App extends Component {
           return (
             <Person
             click={() => this.deletePersonHandler(i)} 
-            key={i} 
+            changed={(event) => this.nameChangedHandlerBis(event,p.id)}
+            key={p.id} 
             name={p.name} 
             age={p.age}
             />
