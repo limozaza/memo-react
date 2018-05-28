@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+
+import Radium from 'radium';
+
 import './App.css';
 
 import Person from './Person/Person';
@@ -72,7 +75,12 @@ class App extends Component {
       color: 'white',
       font: 'inherit',
       border: '1px solid blue',
-      padding: '8px'
+      padding: '8px',
+      cursor: 'pointer',
+      ':hover': {
+        backgroundColor: 'red',
+        color: 'green'
+      }
     }
 
     let personnes = null;
@@ -94,6 +102,10 @@ class App extends Component {
         </div>
       );
       style.backgroundColor = 'red'
+      style[':hover'] = {
+        backgroundColor: 'red',
+        color: 'green'
+      }
     }
 
     const classes = [];
@@ -112,6 +124,7 @@ class App extends Component {
         <button 
         onClick={() => this.switchNameHandler("adilou")}
         style={style}
+        key='a'
         >Switch Name</button>
         <Person name={this.state.personnes[0].name} age={this.state.personnes[0].age}/>
         <Person 
@@ -123,11 +136,11 @@ class App extends Component {
         <Person name={this.state.personnes[2].name} age={this.state.personnes[2].age}/>
         <hr/>
         <h1 className={classes.join(' ')}>React  02</h1>
-        <button style={style} onClick={this.togglePersonHandler}>toggle Persons</button>
+        <button style={style} key='4' onClick={this.togglePersonHandler}>toggle Persons</button>
         {personnes}
       </div>
     );
   }
 }
 
-export default App;
+export default Radium(App);
