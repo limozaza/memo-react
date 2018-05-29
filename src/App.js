@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Radium from 'radium';
+import Radium, {StyleRoot} from 'radium';
 
 import './App.css';
 
@@ -119,26 +119,29 @@ class App extends Component {
         
 
     return (
-      <div className="App">
-        <h1>Bonjour React</h1>
-        <button 
-        onClick={() => this.switchNameHandler("adilou")}
-        style={style}
-        key='a'
-        >Switch Name</button>
-        <Person name={this.state.personnes[0].name} age={this.state.personnes[0].age}/>
-        <Person 
-        click={() => this.switchNameHandler("adilou")} 
-        name={this.state.personnes[1].name} 
-        age={this.state.personnes[1].age}
-        changed={this.nameChangedHandler}
-        >Mon fils</Person>
-        <Person name={this.state.personnes[2].name} age={this.state.personnes[2].age}/>
-        <hr/>
-        <h1 className={classes.join(' ')}>React  02</h1>
-        <button style={style} key='4' onClick={this.togglePersonHandler}>toggle Persons</button>
-        {personnes}
-      </div>
+      <StyleRoot>
+        <div className="App">
+          <h1>Bonjour React</h1>
+          <button 
+          onClick={() => this.switchNameHandler("adilou")}
+          style={style}
+          key='a'
+          >Switch Name</button>
+          <Person name={this.state.personnes[0].name} age={this.state.personnes[0].age}/>
+          <Person 
+          click={() => this.switchNameHandler("adilou")} 
+          name={this.state.personnes[1].name} 
+          age={this.state.personnes[1].age}
+          changed={this.nameChangedHandler}
+          >Mon fils</Person>
+          <Person name={this.state.personnes[2].name} age={this.state.personnes[2].age}/>
+          <hr/>
+          <h1 className={classes.join(' ')}>React  02</h1>
+          <button style={style} key='4' onClick={this.togglePersonHandler}>toggle Persons</button>
+          {personnes}
+        </div>
+      </StyleRoot>
+      
     );
   }
 }
