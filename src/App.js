@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import './App.css';
+import classes from './App.css';
 
 import Person from './Person/Person';
 
@@ -98,18 +98,18 @@ class App extends Component {
       style.backgroundColor = 'red';
     }
 
-    const classes = [];
+    const assignedClasses = [];
     if(this.state.personnes0.length<=2){
-      classes.push('red');
+      assignedClasses.push(classes.red);
     }
     if(this.state.personnes0.length<=1){
-      classes.push('bold');
+      assignedClasses.push(classes.bold);
     }
       
         
 
     return (
-      <div className="App">
+      <div className={classes.App}>
           <h1>Bonjour React</h1>
           <button 
           onClick={() => this.switchNameHandler("adilou")}
@@ -125,7 +125,7 @@ class App extends Component {
           >Mon fils</Person>
           <Person name={this.state.personnes[2].name} age={this.state.personnes[2].age}/>
           <hr/>
-          <h1 className={classes.join(' ')}>React  02</h1>
+          <h1 className={assignedClasses.join(' ')}>React  02</h1>
           <button style={style} key='4' onClick={this.togglePersonHandler}>toggle Persons</button>
           {personnes}
         </div>
